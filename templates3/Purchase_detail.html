@@ -1,0 +1,157 @@
+{% extends 'Home.html' %}
+
+{% block content %}
+    <style>
+    .CartTitle{
+        font-size: 14px;
+    }
+    .mobiletd  tr td{
+         border: 1px solid #dddddd;
+
+
+    }
+    </style>
+    <div class="container">
+
+    <h1 class="CartTitle hide-on-small-only" style="font-size: 40px">Purchase Detail</h1>
+    <h1 class="CartTitle hide-on-med-and-up" style="font-size: 28px">Purchase Detail</h1>
+
+    </div>
+    <div id="Purchase_detail" class="container " >
+    {% for key in info %}
+        <div id="{{ key.POnumber }}" class="detail_info">
+<table border="1" class="responsive-table highlight"  style=" border: 1px solid whitesmoke;" >
+    <thead class="white-text" style="background-color: #000000;">
+    <tr style="border-bottom: 1px solid whitesmoke;">
+        <th class="CartTitle borderRadiusLeft center text-center">POnumber</th>
+        <th class="CartTitle center text-center">Order date</th>
+        <th class="CartTitle center text-center">Cancel date</th>
+        <th class="CartTitle center text-center">Cancel by</th>
+        <th class="CartTitle center text-center">Ship date</th>
+        <th class="CartTitle center text-center">Status</th>
+        <th class="CartTitle center text-center">Total payment</th>
+        <th class="CartTitle center text-center">Shipping Address</th>
+        <th class="CartTitle center text-center">first name</th>
+        <th class="CartTitle center text-center">last name</th>
+        <th class="CartTitle borderRadiusRight center text-center">username</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">{{ key.POnumber }}</td>
+            <td class="center">{{ key.Order_date }}</td>
+            <td class="center">{{ key.Cancel_date }}</td>
+            <td class="center">{{ key.Cancel_by }}</td>
+            <td class="center">{{ key.Ship_date }}</td>
+            <td class="center">{{ key.Status }}</td>
+            <td class="center">{{ key.Total_payment }}</td>
+            <td class="center">{{ key.Address }}</td>
+            <td class="center">{{ key.first_name }}</td>
+            <td class="center">{{ key.last_name }}</td>
+            <td class="center">{{ key.username }}</td>
+        </tr>
+    </tbody>
+</table>
+        <div class="container">
+            <table class="responsive-table highlight" style="border: 1px solid whitesmoke;">
+                <thead class=" white-text" style="background-color: #049372;" >
+                {% for x in key.detail|slice:":1"%}
+                    <tr>
+                        {% for k,v in x.items %}
+                            <td>{{ k }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </thead>
+                <tbody style="background-color: white">
+                    {% for x in key.detail%}
+                        <tr>
+                            {% for k,v in x.items %}
+                                <td>{{ v }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p class="right-align">
+            <a id="cust_cancel_btn" class="waves-effect waves-light btn {% if key.Status == 'Shipped' or  key.Status == 'Cancelled'%}disabled{%endif %}"
+               href="/d/Purchase_detail/cust_cancel_order/{{ key.POnumber }}" style="background-color: #2292a7">
+                Cancel Order
+            </a>
+        </p>
+        </div>
+
+        {% endfor %}
+    </div>
+<!--
+    <div id="Purchase_detail" class="container " >
+    {% for key in info %}
+        <div id="{{ key.POnumber }}" class="detail_info">
+
+        <table class="mobiletd" style="border: 1px">
+            <tr class="">
+                <td class="">POnumber:&nbsp;{{ key.POnumber }}</td>
+                <td></td>
+                <td></td>
+
+
+             </tr>
+         <tr class="">
+                <td>POnumber:&nbsp;{{ key.POnumber }}</td>
+
+
+                <td  colspan="2">Order date:&nbsp;{{ key.Order_date }}</td>
+
+             </tr>
+        </table>
+<table border="1" class="responsive-table highlight"  style=" border: 1px solid whitesmoke;" >
+    <thead class="white-text" style="background-color: #000000;">
+    <tr style="border-bottom: 1px solid whitesmoke;">
+        <th class="CartTitle borderRadiusLeft center text-center">POnumber</th>
+        <th class="CartTitle center text-center">Order date</th>
+        <th class="CartTitle center text-center">Cancel date</th>
+        <th class="CartTitle center text-center">Cancel by</th>
+        <th class="CartTitle center text-center">Ship date</th>
+        <th class="CartTitle center text-center">Status</th>
+        <th class="CartTitle center text-center">Total payment</th>
+        <th class="CartTitle center text-center">Shipping Address</th>
+        <th class="CartTitle center text-center">first name</th>
+        <th class="CartTitle center text-center">last name</th>
+        <th class="CartTitle borderRadiusRight center text-center">username</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">{{ key.POnumber }}</td>
+            <td class="center">{{ key.Order_date }}</td>
+            <td class="center">{{ key.Cancel_date }}</td>
+            <td class="center">{{ key.Cancel_by }}</td>
+            <td class="center">{{ key.Ship_date }}</td>
+            <td class="center">{{ key.Status }}</td>
+            <td class="center">{{ key.Total_payment }}</td>
+            <td class="center">{{ key.Address }}</td>
+            <td class="center">{{ key.first_name }}</td>
+            <td class="center">{{ key.last_name }}</td>
+            <td class="center">{{ key.username }}</td>
+        </tr>
+    </tbody>
+</table>
+   {% endfor %}
+    </div>
+    -->
+{% endblock %}
+
+{% block javascript %}
+    <script>
+    {% if messages %}
+
+        $(document).ready(function () {
+            {% for message in messages %}
+                alert('{{ message }}');
+                {% endfor %}
+        })
+
+    {% endif %}
+    </script>
+{% endblock %}

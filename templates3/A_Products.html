@@ -1,0 +1,159 @@
+{% extends 'Home.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.collapsible-header, .collapsible-body, .collapsible, ul.collapsible>li
+{
+  margin: 0!important;;
+  padding: 0!important;
+  border: 0!important;
+  box-shadow: none!important;
+  background: #fff;
+}
+
+    </style>
+
+
+<br>
+
+ {% for key in info %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+                <span id="desktop-breadcrumbs" class="hide-on-med-and-down">
+					<a href="/" class="breadcrumb "><i class="material-icons">home</i></a>
+					<a href="/a/" class="breadcrumb ">Product List</a>
+					<a href="#" class="breadcrumb ">{{ key.Product_name }}</a></span>
+					</div>
+			</div>
+		</div>
+
+{% endfor %}
+
+    <div class="container">
+        <div border="1" class="responsive-table" style="max-width: 100%">
+
+        {% for key in info %}
+        <div class="row">
+            <div class="col l4 hide-on-small-only"><div class="center"><img data-caption="{{ key.Product_name }}" src="{%  static key.DisplayImage %}" class="materialboxed" style="max-width: 260px"></div></div>
+
+            <div class="col l6 ">
+              <div class="col l4 hide-on-med-and-up"><div class="center"><img data-caption="{{ key.Product_name }}" src="{%  static key.DisplayImage %}" class="materialboxed" style="max-width: 100px;"></div></div>
+
+                <h4 class="hide-on-small-only">{{ key.Product_name }}</h4>
+                <h4 class="hide-on-med-and-up" style="font-size: 20px;">{{ key.Product_name }}</h4>
+
+                <p class="hide-on-small-only"> {{ key.Authors }}&nbsp;<span class="e-info">(Author),</span> {{ key.Publisher }}&nbsp;<span class="e-info">(Publisher)</span></p>
+                <div class="divider hide-on-small-only"></div>
+<div>
+     <div class="divider hide-on-small-only"></div>
+<div class="row">
+    <p class="hide-on-med-and-up"> {{ key.Authors }}&nbsp;<span class="e-info">(Author),</span> {{ key.Publisher }}&nbsp;<span class="e-info">(Publisher)</span></p>
+    <div class="divider hide-on-med-and-up"></div>
+</div>
+ <ul class="collapsible popout">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>See all book information</div>
+      <div class="collapsible-body">
+
+      <table>
+        <thead>
+          <tr>
+              <th>Brand</th>
+              <th>Release date</th>
+              <th>Pages</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{ key.ISBN }}</td>
+            <td>{{ key.Release_date }}</td>
+            <td>{{ key.Num_of_pages }}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+
+      </div>
+    </li>
+
+  </ul>
+                <script>  $(document).ready(function(){
+                            $('.collapsible').collapsible();
+                            });
+                </script>
+
+
+
+          <h6 class="money_y" > $&nbsp;{{ key.Product_price }}&nbsp; USD</h6>
+
+
+
+<p class="addReadMore showlesscontent">&nbsp;{{ key.Description }}</p>
+            </div>
+
+              {% if not superuser %}
+    <div id = "Shopping_card_add" class="container right-align">
+        <a class="waves-effect waves-light btn " id="{{ product_id }}"
+           href="{% if not login %}/c/unlogin_add_shopping_cart{% endif %}{% if login %}#{% endif %}">Add to shopping Cart</a>
+    </div>
+
+
+    {% endif %}
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+    </div>
+
+    </div>
+<br>
+<div class="container">
+<table border="1" class="responsive-table centered">
+<thead class="green white-text">
+    <tr>
+        <th>Photographs</th>
+    </tr>
+
+    </thead>
+        {% for key in img %}
+            <tr>
+            {% for k,v in key.items %}
+                <td><img src = "{% static v %}" class="materialboxed"></td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </table>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    <!--Ajax call to add item to shopping cart-->
+        <script>
+        var item_num = 0
+        $('#Shopping_card_add a').click(function () {
+            var product_id = $(this).attr('id');
+            $.ajax({
+                url: '/c/add_shopping_cart',
+                type: 'GET',
+                data: { 'id': product_id},
+                success: function(data){
+                    console.log(data);
+                    item_num ++
+                    $('#' + data.data).text('item added to your shopping cart' + ' ( ' + item_num + ' )')
+                },
+                error: function (xht,errmsg,err) {
+                    console.log(xht + " " + errmsg + " " + err)
+                }
+            })
+        })
+        </script>
+{% endblock %}

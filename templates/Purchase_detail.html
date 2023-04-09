@@ -1,0 +1,88 @@
+{% extends 'Home.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Purchase Detail</h1>
+    </div>
+    <div id="Purchase_detail" class="container">
+    {% for key in info %}
+        <div id="{{ key.POnumber }}" class="detail_info">
+<table border="1" class="responsive-table">
+    <thead class="black white-text">
+    <tr>
+        <th>POnumber</th>
+        <th>Order_date</th>
+        <th>Cancel_date</th>
+        <th>Cancel_by</th>
+        <th>Ship_date</th>
+        <th>Status</th>
+        <th>Total_payment</th>
+        <th>Shipping_Address</th>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>username</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ key.POnumber }}</td>
+            <td>{{ key.Order_date }}</td>
+            <td>{{ key.Cancel_date }}</td>
+            <td>{{ key.Cancel_by }}</td>
+            <td>{{ key.Ship_date }}</td>
+            <td>{{ key.Status }}</td>
+            <td>{{ key.Total_payment }}</td>
+            <td>{{ key.Address }}</td>
+            <td>{{ key.first_name }}</td>
+            <td>{{ key.last_name }}</td>
+            <td>{{ key.username }}</td>
+        </tr>
+    </tbody>
+</table>
+        <div class="container">
+            <table class="responsive-table">
+                <thead class="green white-text">
+                {% for x in key.detail|slice:":1"%}
+                    <tr>
+                        {% for k,v in x.items %}
+                            <td>{{ k }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </thead>
+                <tbody>
+                    {% for x in key.detail%}
+                        <tr>
+                            {% for k,v in x.items %}
+                                <td>{{ v }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p class="right-align">
+            <a id="cust_cancel_btn" class="waves-effect waves-light btn {% if key.Status == 'Shipped' or  key.Status == 'Cancelled'%}disabled{%endif %}"
+               href="/d/Purchase_detail/cust_cancel_order/{{ key.POnumber }}">
+                Cancel Order
+            </a>
+        </p>
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+    {% if messages %}
+
+        $(document).ready(function () {
+            {% for message in messages %}
+                alert('{{ message }}');
+                {% endfor %}
+        })
+
+    {% endif %}
+    </script>
+{% endblock %}

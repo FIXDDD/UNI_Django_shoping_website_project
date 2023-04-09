@@ -1,0 +1,23 @@
+{% extends 'authorize.html' %}
+{% block content%}
+        <div class="container" id="register_form">
+            <h1>Register</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+            {{ user_form.as_table }}
+            </table>
+            <a id="Register_button" class="waves-effect waves-light btn" value="Register">Register</a>
+        </form>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    {% if messages %}
+        <script>
+    {% for message in messages %}
+    alert('{{ message }}');
+    {% endfor %}
+        </script>
+    {% endif %}
+{% endblock %}

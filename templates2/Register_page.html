@@ -1,0 +1,25 @@
+{% extends 'authorize.html' %}
+{% block content%}
+        <div class="container white" id="register_form" style="max-width: 100%; border: 2px solid #73AD21;border-radius: 25px; background-color: #0f9d58">
+            <h1 class="center">Register</h1>
+        <form method="POST" >
+            {% csrf_token %}
+            <table style="margin-top: -10px; ">
+            {{ user_form.as_table }}
+            </table>
+            <div class="center" style="margin-bottom: 10px">
+            <a id="Register_button" class=" waves-effect waves-light btn " value="Register" style="margin-top: 10px">Register</a>
+            </div>
+        </form>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    {% if messages %}
+        <script>
+    {% for message in messages %}
+    alert('{{ message }}');
+    {% endfor %}
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,466 @@
+{% extends 'Home.html' %}
+ {% load static %}
+
+
+{% block content %}
+<!--First Part Start-->
+
+
+    <div class="row" style=" background-color: whitesmoke; padding-top: 50px;padding-bottom: 50px;">
+        <div class="col m2 l2">
+        </div>
+        <div class="col s12 m5 l4  center" ><img class="materialboxed " data-caption="Book shop" style="max-width: 90%"
+                                              src="{% static 'image/homeLogo.gif' %}" ></div>
+        <div class="col m1 l2">
+        </div>
+        <div class="col s12 l5" >
+                <div class="">
+                    <div class="section-title homepageF">
+                        <div class="center">
+                        <h1 class="PhoneTitleBig">LEARN AND LIVE</h1>
+                        </div>
+                        <div>
+                        <p>“So books are real to me, too; they link me not just with other minds but with the vision of other minds,
+                            what those minds understand and see. I see their worlds as well as I see my own.”― Philip K. Dick
+                        </p>
+
+                        <div class="center">
+                                <a href="/a/" class="waves-effect waves-light btn " style="background-color: #9F9F9F;">
+                                <i class="material-icons right">shop</i>Shop Now</a>
+                                </div>
+                        </div>
+                        </div>
+
+
+                </div>
+                </div>
+        </div>
+
+
+
+        <div class="HotBookTitle" style="margin-top: 20px;" > WHAT'S HOT </div>
+
+
+
+<div class="owl-carousel">
+
+<div class="item CarouselItem" >
+    <!--card product-->
+   <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator"  style="" src="{% static 'image/t2.jpg' %}"
+          onmouseover="this.src='{% static 'image/t2.1.jpg' %}'"
+          onmouseout="this.src='{% static 'image/t2.jpg' %}'">
+
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4 PhoneContextSizeSmall" >Do Androids Dream of Electric Sheep?<i class="material-icons right">more_vert</i></span>
+          <p><a href="#" target="_blank">View more</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Do Androids Dream of Electric Sheep?<i class="material-icons right">close</i></span>
+          <p>By 2021, the World War has killed millions, driving entire species into extinction and sending mankind off-planet.
+               Those who remain covet any living creature, and for people who can’t afford one, companies built
+               incredibly realistic simulacra: horses, birds, cats, sheep. They’ve even built humans. Immigrants
+               to Mars receive androids so sophisticated they are indistinguishable from true men or women. Fearful
+               of the havoc these artificial humans can wreak, the government bans them from Earth. Driven into hiding,
+               unauthorized androids live among human beings, undetected. Rick Deckard, an officially sanctioned bounty
+               hunter, is commissioned to find rogue androids and “retire” them. But when cornered, androids fight
+               back—with lethal force.</p>
+        </div>
+      </div>
+    <!--emd--->
+</div>
+<div class="item CarouselItem" >
+   <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator"  style="" src="{% static 'image/t1.jpg' %}"
+          onmouseover="this.src='{% static 'image/t1.2.jpg' %}'"
+          onmouseout="this.src='{% static 'image/t1.jpg' %}'">
+
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Ubik<i class="material-icons right">more_vert</i></span>
+          <p><a href="#" target="_blank">View more</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4 PhoneContextSizeSmall">Ubik<i class="material-icons right">close</i></span>
+          <p>	Glen Runciter runs a lucrative business - deploying his teams of anti-psychics to corporate clients who
+              want privacy and security from psychic spies. But when he and his top team are ambushed by a rival,
+              he is gravely injured and placed in "half-life," a dreamlike state of suspended animation. Soon,
+              though, the surviving members of the team begin experiencing some strange phenomena, such as
+              Runciter's face appearing on coins and the world seeming to move backward in time. As consumables
+              deteriorate and technology gets ever more primitive, the group needs to find out what is causing
+              the shifts and what a mysterious product called Ubik has to do with it all.</p>
+        </div>
+      </div>
+    <!--emd--->
+</div>
+<div class="item CarouselItem">
+    <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator"  style="" src="{% static 'image/t3.jpg' %}"
+          onmouseover="this.src='{% static 'image/t3.2.jpg' %}'"
+          onmouseout="this.src='{% static 'image/t3.jpg' %}'">
+
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4 PhoneContextSizeSmall ">Do Androids Dream of Electric Sheep?<i class="material-icons right">more_vert</i></span>
+          <p><a href="#" target="_blank">View more</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Do Androids Dream of Electric Sheep?<i class="material-icons right">close</i></span>
+          <p>By 2021, the World War has killed millions, driving entire species into extinction and sending mankind off-planet.
+               Those who remain covet any living creature, and for people who can’t afford one, companies built
+               incredibly realistic simulacra: horses, birds, cats, sheep. They’ve even built humans. Immigrants
+               to Mars receive androids so sophisticated they are indistinguishable from true men or women. Fearful
+               of the havoc these artificial humans can wreak, the government bans them from Earth. Driven into hiding,
+               unauthorized androids live among human beings, undetected. Rick Deckard, an officially sanctioned bounty
+               hunter, is commissioned to find rogue androids and “retire” them. But when cornered, androids fight
+               back—with lethal force.</p>
+        </div>
+      </div>
+    <!--emd--->
+</div>
+<div class="item CarouselItem">
+   <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator"  style="" src="{% static 'image/t3.jpg' %}"
+          onmouseover="this.src='{% static 'image/t3.2.jpg' %}'"
+          onmouseout="this.src='{% static 'image/t3.jpg' %}'">
+
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4 PhoneContextSizeSmall">The Man in the High Castle book<i class="material-icons right">more_vert</i></span>
+          <p><a href='#' target="_blank">View more</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">The Man in the High Castle book<i class="material-icons right">close</i></span>
+          <p>It's America in 1962. Slavery is legal once again. The few Jews who still survive hide under assumed names.
+            In San Francisco, the I Ching is as common as the Yellow Pages. All because some twenty years earlier the
+            United States lost a war - and is now occupied by Nazi Germany and Japan.
+                   <br>
+                   This harrowing, Hugo Award-winning novel is the work that established Philip K. Dick as
+            an innovator in science fiction while breaking the barrier between science fiction and
+            the serious novel of ideas. In it, Dick offers a haunting vision of history as a nightmare
+            from which it may just be possible to wake.</p>
+        </div>
+      </div>
+    <!--emd--->
+
+</div>
+
+</div>
+<script>
+
+
+var browserWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+if(browserWidth>600)
+{
+       $(".owl-carousel").owlCarousel({
+    items: 3, // 一次輪播幾個項目
+loop: true, // 循環輪播
+ // 與右邊圖片的距離
+nav: true, // 導航文字
+autoplay: true, // 自動輪播
+autoplayTimeout: 3000, // 切換時間
+autoplayHoverPause: true // 滑鼠經過時暫停
+
+})
+}
+if(browserWidth<600)
+{
+       $(".owl-carousel").owlCarousel({
+    items: 1, // 一次輪播幾個項目
+loop: true, // 循環輪播
+ // 與右邊圖片的距離
+nav: true, // 導航文字
+autoplay: true, // 自動輪播
+autoplayTimeout: 3000, // 切換時間
+autoplayHoverPause: true // 滑鼠經過時暫停
+
+})
+}
+
+</script>
+
+<!--
+  <div class="row">
+<div class="col m1">
+</div>
+
+    <div class="col s12 m3">
+      <div class="card" style="box-shadow:3px 3px 12px gray;padding:3px;">
+        <div class="card-image">
+          <img class="materialboxed" data-caption="Do Androids Dream of Electric Sheep?" style="" src="{% static 'image/t2.jpg' %}"
+          onmouseover="this.src='{% static 'image/t2.1.jpg' %}'"
+          onmouseout="this.src='{% static 'image/t2.jpg' %}'">
+            <span class="card-title center"></span>
+        </div>
+        <div class="card-content">
+           <div class="comment more"   >
+	 By 2021, the World War has killed millions, driving entire species into extinction and sending mankind off-planet.
+               Those who remain covet any living creature, and for people who can’t afford one, companies built
+               incredibly realistic simulacra: horses, birds, cats, sheep. They’ve even built humans. Immigrants
+               to Mars receive androids so sophisticated they are indistinguishable from true men or women. Fearful
+               of the havoc these artificial humans can wreak, the government bans them from Earth. Driven into hiding,
+               unauthorized androids live among human beings, undetected. Rick Deckard, an officially sanctioned bounty
+               hunter, is commissioned to find rogue androids and “retire” them. But when cornered, androids fight
+               back—with lethal force.
+
+</div>
+
+        </div>
+
+
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m3 lg4" style="margin-left: 70px">
+      <div class="card" style="box-shadow:3px 3px 12px gray;padding:3px;">
+        <div class="card-image">
+        <img  class="materialboxed" data-caption="Ubik" style="" src="{% static 'image/t1.jpg' %}"
+          onmouseover="this.src='{% static 'image/t1.2.jpg' %}'"
+          onmouseout="this.src='{% static 'image/t1.jpg' %}'">
+          <span class="card-title "></span>
+        </div>
+        <div class="card-content">
+
+     <div class="comment more">
+	Glen Runciter runs a lucrative business - deploying his teams of anti-psychics to corporate clients who
+              want privacy and security from psychic spies. But when he and his top team are ambushed by a rival,
+              he is gravely injured and placed in "half-life," a dreamlike state of suspended animation. Soon,
+              though, the surviving members of the team begin experiencing some strange phenomena, such as
+              Runciter's face appearing on coins and the world seeming to move backward in time. As consumables
+              deteriorate and technology gets ever more primitive, the group needs to find out what is causing
+              the shifts and what a mysterious product called Ubik has to do with it all.
+</div>
+
+
+
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m3 lg4" style="margin-left: 70px">
+      <div class="card" style="box-shadow:3px 3px 12px gray;padding:3px;">
+        <div class="card-image">
+          <img class="materialboxed" data-caption="The Man in the High Castle book" style="" src="{% static 'image/t3.jpg' %}"
+          onmouseover="this.src='{% static 'image/t3.2.jpg' %}'"
+          onmouseout="this.src='{% static 'image/t3.jpg' %}'">
+          <span class="card-title center"></span>
+        </div>
+        <div class="card-content">
+
+
+<div class="comment more">
+	It's America in 1962. Slavery is legal once again. The few Jews who still survive hide under assumed names.
+            In San Francisco, the I Ching is as common as the Yellow Pages. All because some twenty years earlier the
+            United States lost a war - and is now occupied by Nazi Germany and Japan.
+                   <br>
+                   This harrowing, Hugo Award-winning novel is the work that established Philip K. Dick as
+            an innovator in science fiction while breaking the barrier between science fiction and
+            the serious novel of ideas. In it, Dick offers a haunting vision of history as a nightmare
+            from which it may just be possible to wake.
+</div>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+-->
+   <!--book banner-->
+
+          <div class="row"  style="margin-left: -10px;margin-right:-15px;margin-bottom: -5px;margin-top: -10px;">
+              <div class="col s12 m12 lg12">
+                  <img  src='{% static 'image/BookShopBanner.png' %}' alt="banner" style="max-width: 100%">
+              </div>
+          </div>
+
+
+
+<!--book banner-->
+
+
+    <!--Parallax Start   background-image: {% static 'image/parallar_b.png' %}-->
+
+       <div class="background-farallax" style="background-image: url('{% static 'image/parallar_b.png' %}');max-width: 100%">
+       <img src="{% static 'image/parallar_f.png' %}" style="max-width: 100%">
+    </div>
+
+
+
+<!--
+
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="{% static 'image/parallar_b.png' %}"></div>
+  </div>
+
+     <!--Parallax End-->
+
+
+
+
+
+
+
+
+<!--
+
+
+  <div class="divider"></div>
+  <div class="section">
+    <h5>第三部分</h5>
+    <p>集体</p>
+  </div>
+<section>
+    <div>
+        <div class="container">
+            <h3>Materialize Carousel Demo</h3>
+            <div class="carousel" id="demo-carousel">
+                <a class="carousel-item" href="#"><img src="{% static 'image/Jackets.jpg' %}"></a>
+                <a class="carousel-item" href="#"><img src="{% static 'image/Jackets.jpg' %}"></a>
+                <a class="carousel-item" href="#t"><img src="{% static 'image/Jackets.jpg' %}"></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+  <ul id="tabs-swipe-demo" class="tabs">
+    <li class="tab col s3"><a href="#swipe-1">Test 1</a></li>
+    <li class="tab col s3"><a class="active" href="#swipe-2">Test 2</a></li>
+    <li class="tab col s3"><a href="#swipe-3">Test 3</a></li>
+  </ul>
+  <div id="swipe-1" class="col s12 blue">First tab content</div>
+  <div id="swipe-2" class="col s12 red">Second tab content</div>
+  <div id="swipe-3" class="col s12 green">Third tab content</div>
+
+    <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="{% static 'image/Jackets.jpg' %}">
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'image/Jackets.jpg' %}">
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'image/Jackets.jpg' %}">
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'image/Jackets.jpg' %}">
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+-->
+
+<script>
+
+
+
+$(document).ready(function() {
+	var showChar = 100;
+	var ellipsestext = "...";
+	var moretext = "more";
+	var lesstext = "less";
+	$('.more').each(function() {
+		var content = $(this).html();
+
+		if(content.length > showChar) {
+
+			var c = content.substr(0, showChar);
+			var h = content.substr(showChar-1, content.length - showChar);
+
+			var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+			$(this).html(html);
+		}
+
+	});
+
+	$(".morelink").click(function(){
+		if($(this).hasClass("less")) {
+			$(this).removeClass("less");
+			$(this).html(moretext);
+		} else {
+			$(this).addClass("less");
+			$(this).html(lesstext);
+		}
+		$(this).parent().prev().toggle();
+		$(this).prev().toggle();
+		return false;
+	});
+
+});
+
+
+
+$(document).ready(function(){
+      $('.parallax').parallax();
+
+    });
+
+
+
+
+$(document).ready(function(){
+      $('#demo-carousel').carousel();
+    });
+
+
+$(document).ready(function(){
+    $('ul.tabs').tabs({
+      swipeable : true,
+      responsiveThreshold : 1920
+    });carousel
+  });
+
+  </script>
+
+
+{% endblock %}
+
+
+{% block javascript %}
+    {% if messages %}
+        <script>
+        $(document).ready(function () {
+            {% for message in messages %}
+                alert('{{ message }}');
+                {% endfor %}
+        })
+        </script>
+    {% endif %}
+
+{% endblock %}

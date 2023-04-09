@@ -1,0 +1,41 @@
+{% extends 'Home.html' %}
+
+{% block content %}
+<h1>Purchase Order</h1>
+        <div>
+<table border="1">
+    <thead>
+
+    {% for key in info|slice:":1"%}
+    <tr>
+            {% for k,v in key.items %}
+                <td>{{ k }}</td>
+            {% endfor %}
+    </tr>
+    {% endfor %}
+
+    </thead>
+
+        {% for key in info %}
+        <tr>
+            {% for k,v in key.items %}
+                        <td>{{ v }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+    </table>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    {% if messages %}
+        <script>
+        $(document).ready(function () {
+            {% for message in messages %}
+                alert('{{ message }}');
+                {% endfor %}
+        })
+        </script>
+    {% endif %}
+{% endblock %}

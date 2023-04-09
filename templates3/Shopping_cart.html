@@ -1,0 +1,56 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+         <h1 class="CartTitle ">your cart</h1>
+    </div>
+
+        <div class="container">
+        <div class="divider"></div>
+        <br>
+         <!--
+<table border="1" class="responsive-table">
+    <thead class=" black-text">
+
+    <tr>
+        <th></th>
+        <th></th>
+        <th class="CartPrice hide-on-small-only">Quantity</th>
+        <th class="CartPrice hide-on-small-only">Price</th>
+        <th></th>
+    </tr>
+
+    </thead>
+       -->
+        {% for c in info %}
+        <div class="row valign-wrapper">
+
+            <div class="center col l2 "><img data-caption="{{ c.Product_name }}" src="{%  static c.DisplayImage %}" class="materialboxed" style="max-width: 80px;"></div>
+            <p class="CartBookName col l3 ">{{ c.Product_name}}</p>
+            <p class="col l2 hide-on-small-only">Qty:&nbsp;{{ c.Quantity }}</p>
+            <p class="col l2 hide-on-small-only red-text" style="font-weight:bold;">${{ c.Product_price }}</p>
+            <div class="col l3 hide-on-small-only"><a class="waves-effect waves-light btn " href="/a/product/{{ c.Product_ID_id }}">Product Detail</a></div>
+
+        </div>
+            <div class="row ">
+
+
+            <p class="col s2 show-on-small hide-on-med-and-up">Qty:&nbsp;{{ c.Quantity }}</p>
+            <p class="col s2 show-on-small hide-on-med-and-up red-text" style="font-weight:bold;">${{ c.Product_price }}</p>
+            <div class="col s2 offset-s2 show-on-small hide-on-med-and-up"><a class="waves-effect waves-light btn " href="/a/product/{{ c.Product_ID_id }}">Product Detail</a></div>
+
+        </div>
+            <div class="divider"></div>
+            <br>
+         {% endfor %}
+    </table>
+        <br>
+        </div>
+    <div class="container row">
+        <a class="waves-effect waves-light btn {% if empty %}disabled{% endif %}" href="/c/Cart_Checkout/{{ total }}"> check out all items </a>
+        <h6 class="right">Total Payment = <span>{{ total }}</span></h6>
+    </div>
+
+<br>
+
+{% endblock %}

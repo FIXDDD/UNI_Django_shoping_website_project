@@ -1,0 +1,162 @@
+{% extends 'Home.html' %}
+
+{% block content %}
+    <div class="container" id="tracking_form">
+        <h1 class="CartTitle">Purchase tracking</h1>
+    <div class="divider"></div>
+    <form method="get" action="/d/purchase_tracking">
+    <div class="row">
+        <p class="col l3">
+            <label>
+                <input name="sort_status" type="radio" value="current" {% if sort == 'current' %}checked{% endif %}/>
+                <span>Current purchase</span>
+            </label>
+        </p>
+        <p class="col l3">
+            <label>
+                <input name="sort_status" type="radio" value="past" {% if sort == 'past' %}checked{% endif %}/>
+                <span>Past Purchase</span>
+            </label>
+        </p>
+
+    </div>
+        {% if reset %}
+    <p>
+        <label>
+            <a class="waves-effect waves-light btn" href="/d/purchase_tracking">Reset</a>
+        </label>
+    </p>
+    {% endif %}
+         <p class="right-align hide-on-small-only">
+            <a id="sort_status_form_btn" class="waves-effect waves-light btn">Search</a>
+        </p>
+        <p class="left-align hide-on-med-and-up">
+            <a id="sort_status_form_btn_1" class="waves-effect waves-light btn">Search</a>
+        </p>
+    </form>
+    </div>
+
+
+
+<!--
+
+        <div class="container">
+<table border="1" id="tracking" class="responsive-table highlight">
+    <thead class="black white-text">
+        <tr>
+            <th>POnumber</th>
+            <th>Order_date</th>
+            <th>Total_payment</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for y in info %}
+        <tr id="{{ y.POnumber }}">
+            <td>{{ y.POnumber }}</td>
+            <td>{{ y.Order_date }}</td>
+            <td>{{ y.Total_payment }}</td>
+            <td>{{ y.Status }}</td>
+        </tr>
+    {% endfor %}
+</tbody>
+    </table>
+        </div>
+-->
+    <div class="container row hide-on-small-only text-center">
+  <div  class="col s12">
+    <div class="card material-table">
+      <table border="1" id="tracking" class="responsive-table highlight">
+        <thead style="background-color: whitesmoke">
+          <tr>
+            <th class="CartTitle">POnumber</th>
+            <th class="CartTitle">Order_date</th>
+            <th class="CartTitle">Total_payment</th>
+            <th class="CartTitle">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+
+          {% for y in info %}
+        <tr id="{{ y.POnumber }}">
+            <td>{{ y.POnumber }}</td>
+            <td>{{ y.Order_date }}</td>
+            <td>{{ y.Total_payment }}</td>
+            <td>{{ y.Status }}</td>
+        </tr>
+    {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+    <!--table show in phone-->
+
+      <ul class = "container collapsible popout hide-on-med-and-up" data-collapsible = "accordion" id="tracking1">
+          {% for y in info %}
+          <li>
+            <div class = "collapsible-header" >
+
+               <p>POnumber: {{ y.POnumber }}</p>
+
+            </div>
+            <div class = "collapsible-body">
+
+  <div class="row ">
+
+
+
+            <div class="col s12">Order date:<span style="float: right">{{ y.Order_date }}</span></div>
+      <div class="col s12">Total payment:<span style="float: right">${{ y.Total_payment }}</span></div>
+      <div class="col s12">Status:<span style="float: right">{{ y.Status }}</span></div>
+      <div class="col s12">&nbsp;</div>
+       <div class="col s12">
+            <a name="{{ y.POnumber }}" class="waves-effect waves-light btn trackingMobile">Purchase Detail</a>
+        </div>
+        </div>
+
+            </div>
+         </li>
+{% endfor %}
+
+      </ul>
+    <!--end-->
+
+    <script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+
+    </script>
+    <br>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+    {% if messages %}
+        $(document).ready(function () {
+            {% for message in messages %}
+                alert('{{ message }}');
+                {% endfor %}
+        })
+
+    {% endif %}
+    $('#tracking tbody tr').click(function(event){
+            window.location.href = "/d/Purchase_detail#" + event.currentTarget.id
+        })
+     $('.trackingMobile').click(function(event){
+            window.location.href = "/d/Purchase_detail#" + event.currentTarget.name
+        })
+    $('#sort_status_form_btn').click(function(){
+        $('#tracking_form form').submit();
+        console.log('1');
+        })
+    $('#sort_status_form_btn_1').click(function(){
+        $('#tracking_form form').submit();
+        console.log('1');
+        })
+    </script>
+{% endblock %}

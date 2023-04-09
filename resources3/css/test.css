@@ -1,0 +1,267 @@
+#ll{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+#login_form{
+    border: black 1px solid;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  #tracking tbody tr{
+      cursor: pointer;
+  }
+
+  #order_list tbody tr{
+      cursor: pointer;
+  }
+
+  .detail_info{
+      margin-bottom: 5%;
+  }
+
+  .suggestBook{
+		padding-top: 120px
+	}
+
+  .e-info{
+      color: #9d9d9d;
+  }
+.money_y {
+	color: #e7ab3c;
+	font-weight: 700;
+}
+
+
+.addReadMore.showlesscontent .SecSec,
+    .addReadMore.showlesscontent .readLess {
+        display: none;
+    }
+
+    .addReadMore.showmorecontent .readMore {
+        display: none;
+    }
+
+    .addReadMore .readMore,
+    .addReadMore .readLess {
+        font-weight: bold;
+        margin-left: 2px;
+        color: blue;
+        cursor: pointer;
+    }
+
+    .addReadMoreWrapTxt.showmorecontent .SecSec,
+    .addReadMoreWrapTxt.showmorecontent .readLess {
+        display: block;
+    }
+
+
+.breadcrumb:before {
+    content: '\E5CC';
+    color: grey;
+    vertical-align: top;
+    display: inline-block;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    margin: 0 10px 0 8px;
+    -webkit-font-smoothing: antialiased;
+}
+.breadcrumb {
+    font-size: 10px;
+    color: gray;
+
+}
+.breadcrumb:last-child {
+    color: black;
+
+}
+.CartTitle{
+    font-family: "Libre Baskerville",serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 24px;
+    text-transform: uppercase;
+
+}
+.CartPrice{
+    font-size: 13px;
+    line-height: 19px;
+    color: #444444;
+        font-family: "News Gothic No 2",sans-serif;
+
+}
+.CartBookName{
+    font-family: "Libre Baskerville",serif;
+    font-size: 20px;
+    font-weight:bold;
+}
+
+
+
+
+.buttonChangePassword {
+	display: block;
+  width: 200px;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 0;
+  overflow: hidden;
+  position: relative;
+  transform: translatez(0);
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: 16px;
+	font-weight: normal;
+	box-shadow: 0 9px 18px rgba(0,0,0,0.2);
+}
+
+.instagram {
+	text-align: center;
+	border-radius: 50px;
+  padding: 12px;
+  color: white;
+  background: #BD3381;
+  transition: all 0.2s ease-out 0s;
+}
+
+.gradient {
+	display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  bottom: auto;
+  margin: auto;
+  z-index: -1;
+  background: radial-gradient(90px circle at top center, rgba(238,88,63,.8) 30%, rgba(255,255,255,0));
+  transition: all 0s ease-out 0s;
+	transform: translatex(-140px);
+	animation: 18s linear 0s infinite move;
+}
+
+
+div.material-table table {
+  table-layout: fixed;
+}
+
+div.material-table .table-header {
+  height: 64px;
+  padding-left: 24px;
+  padding-right: 14px;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: flex;
+  -webkit-display: flex;
+  border-bottom: solid 1px #DDDDDD;
+}
+
+div.material-table .table-header .actions {
+  display: -webkit-flex;
+  margin-left: auto;
+}
+
+
+
+
+
+
+div.material-table .table-footer .material-pagination li:first-child {
+  margin-right: 24px;
+}
+
+
+
+div.material-table .table-footer select {
+  background-color: transparent;
+  width: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  height: auto;
+  margin-left: 20px;
+}
+
+div.material-table .table-title {
+  font-size: 20px;
+  color: #000;
+}
+
+div.material-table table tr td {
+  padding: 0 0 0 56px;
+  height: 48px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: solid 1px #DDDDDD;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.material-table table tr td a {
+  color: inherit;
+}
+
+div.material-table table tr td a i {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+div.material-table table tr {
+  font-size: 12px;
+}
+
+div.material-table table th {
+  font-size: 18px;
+  font-weight: 500;
+  color: #757575;
+
+  white-space: nowrap;
+  padding: 0;
+  height: 56px;
+  padding-left: 56px;
+  vertical-align: middle;
+  outline: none !important;
+}
+div.material-table table tbody tr:hover {
+  background-color: #EEE;
+}
+
+div.material-table table th:first-child,
+div.material-table table td:first-child {
+  padding: 0 0 0 24px;
+}
+
+div.material-table table th:last-child,
+div.material-table table td:last-child {
+  padding: 0 14px 0 0;
+}
+
+.font_size_18{
+  font-size: 18px;
+}
+
+  .borderRadius{
+      border-radius: 40px;
+  }
+@media only screen and (min-width: 1410px) {
+    .hompageTopMargin {
+        margin-top: 160px;
+    }
+}
+

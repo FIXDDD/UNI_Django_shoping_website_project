@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!---
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    -->
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<!--
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+     <link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+
+}
+.background-farallax {
+     background-image:url('{{ STATIC_URL }}image/parallar_b.png');
+  background-size: 100%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 767px) {
+  .background-farallax {
+background: url("/resources/image/parallar_b.png") 50% 0 no-repeat fixed;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .homepageF{
+        padding-top: 200px;padding-bottom: 50px;
+    }
+    .CarouselItem{
+        margin-left: 50px;margin-right: 50px
+    }
+}
+@media only screen and (max-width: 767px) {
+  .PhoneTitleBig{
+        font-size: 34pt;
+    }
+    .PhoneTitleMedium{
+        font-size: 20pt;
+    }
+    .PhoneContextSize{
+        font-size: 14pt;
+    }
+     .PhoneContextSizeSmall{
+        font-size: 7pt;
+         color: red;
+    }
+
+
+}
+nav.nav-center ul {
+    text-align: center;
+}
+nav.nav-center ul li {
+    display: inline;
+    float: none;
+}
+nav.nav-center ul li a {
+    display: inline-block;
+}
+        .black-text li a{
+    color: black;
+}
+
+</style>
+</head>
+<body>
+<header>
+    <a name="top"></a>
+
+<!-- Dropdown list -->
+    {% if login %}
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="/b/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            <li class="divider"></li>
+            <li><a href="/b/change_pw"><i class="fas fa-exchange-alt"></i>Change password</a></li>
+        </ul>
+    {% endif %}
+<!-- Dropdown list -->
+
+
+    <nav class="nav-extended white black-text">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center"><div style="max-height: 90px"><img src="{% static 'image/logoPng.png' %}"  style="max-height: 50px" ></div></a>
+
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {% if login %}
+              <!-- Dropdown Trigger -->
+              <li>
+                  <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+                      {{username}}<i class="material-icons right">arrow_drop_down</i>
+                  </a>
+
+              </li>
+              <!-- end Dropdown Trigger -->
+          {% endif %}
+          {% if not login %}
+          <li><a href="/b/login"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a></li>
+          {% endif %}
+      </ul>
+    </div>
+    <!--Top nav bar -->
+<!--
+    <nav  class="nav-center" role="navigation">
+      <div class="tabs tabs-transparent nav-wrapper container nav-center">
+        <li class="tab"><a href="/">Home</a></li>
+        <li class="tab"><a href="/a/">product</a></li>
+          {% if not superuser %}
+            <li class="tab"><a href="/c/shopping_cart">Shopping cart</a></li>
+            <li class="tab"><a href="/d/Purchase_detail">Purchase detail</a></li>
+            <li class="tab"><a href="/d/purchase_tracking">Purchase tracking</a></li>
+          {% endif %}
+            {% if superuser %}
+                <li class="tab"><a href="/f/purchase_order">Purchase Order</a></li>
+                <li class="tab"><a href="/f/purchase_processing">Purchase processing</a></li>
+          {% endif %}
+      </div>
+    </nav>
+-->
+
+    <nav class="nav-center white black-text hide-on-small-only" role="navigation">
+    <div class="nav-wrapper container ">
+        <ul>
+           <li class="tab "><a href="/"><i class="fas fa-home"></i>&nbspHome</a></li>
+        <li class="tab "><a href="/a/">product</a></li>
+          {% if not superuser %}
+            <li class="tab "><a href="/c/shopping_cart">Shopping cart</a></li>
+            <li class="tab "><a href="/d/Purchase_detail">Purchase detail</a></li>
+            <li class="tab"><a href="/d/purchase_tracking">Purchase tracking</a></li>
+          {% endif %}
+            {% if superuser %}
+                <li class="tab"><a href="/f/purchase_order?sort_order=">Purchase Order</a></li>
+                <li class="tab"><a href="/f/purchase_processing">Purchase processing</a></li>
+          {% endif %}
+        </ul>
+    </div>
+</nav>
+    <!--End Top nav bar -->
+  </nav>
+
+<!-- only show in mobile view -->
+  <ul class="sidenav" id="mobile-demo">
+  <li><div class="user-view">
+  <div class="background">
+        <img src="{% static 'image/LoginTitle.jpg' %}">
+      </div>
+  {% if login %}
+      <a><span class="white-text name">{{username}}</span></a>
+
+      </div></li>
+      <li><div class="divider"></div></li>
+
+  {% endif %}
+
+
+      <li class="tab "><a href="/"><i class="fas fa-home"></i>Home</a></li>
+        <li class="tab "><a href="/a/"><i class="fas fa-search"></i>product</a></li>
+          {% if not superuser %}
+            <li class="tab "><a href="/c/shopping_cart"><i class="fas fa-shopping-cart"></i>Shopping cart</a></li>
+            <li class="tab "><a href="/d/Purchase_detail"><i class="fas fa-boxes"></i>Purchase detail</a></li>
+            <li class="tab"><a href="/d/purchase_tracking"> <i class="fas fa-search-location"></i>Purchase tracking</a></li>
+          {% endif %}
+            {% if superuser %}
+                <li class="tab"><a href="/f/purchase_order?sort_order="><i class="fas fa-shopping-bag"></i>Purchase Order</a></li>
+                <li class="tab"><a href="/f/purchase_processing"><i class="fas fa-money-check"></i>Purchase processing</a></li>
+          {% endif %}
+
+    {% if login %}
+        <li class="divider"></li>
+        <li><a href="/b/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+
+            <li><a href="/b/change_pw"><i class="fas fa-exchange-alt"></i>Change password</a></li>
+  {% endif %}
+      {% if not login %}
+          <li><a href="/b/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+    {% endif %}
+
+  </ul>
+<!-- end only show in mobile view -->
+
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+
+
+
+
+</main>
+
+ <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red tooltipped"  href="#top"
+       data-position="left"
+       data-tooltip="Back to top of page">
+
+      <i class="large material-icons">arrow_upward</i>
+    </a>
+
+  </div>
+
+<footer class="page-footer black">
+    <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Book Shop</h5>
+                <p class="grey-text text-lighten-4">It is a design-minded and experiences related to books and reading. </p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">SERVICE</h5>
+                <ul>
+                      <li class="tab"><a href="/a/">PEODUCT</a></li>
+          {% if not superuser %}
+            <li class="tab"><a href="/c/shopping_cart">SHOPPING CART</a></li>
+            <li class="tab"><a href="/d/Purchase_detail">PURCHASE DETAIL</a></li>
+            <li class="tab"><a href="/d/purchase_tracking">PURCHASE TRACKING</a></li>
+          {% endif %}
+            {% if superuser %}
+                <li class="tab"><a href="/f/purchase_order?sort_order=">PURCHASE ORDER</a></li>
+                <li class="tab"><a href="/f/purchase_processing">PURCHASE PROCESSING</a></li>
+          {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+
+</footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="{% static 'js/test.js' %}"></script>
+{% block javascript %}
+{% endblock %}
+</html>

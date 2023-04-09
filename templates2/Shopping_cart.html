@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Shopping cart</h1>
+    </div>
+
+        <div class="container">
+<table border="1" class="responsive-table">
+    <thead class="black white-text">
+    <tr>
+        <th>Product name</th>
+        <th>Product price</th>
+        <th>Quantity</th>
+        <th>link</th>
+    </tr>
+    </thead>
+        {% for c in info %}
+        <tr>
+            <td>{{ c.Product_name}}</td>
+            <td>{{ c.Product_price }}</td>
+            <td>{{ c.Quantity }}</td>
+            <td><a class="waves-effect waves-light btn " href="/a/product/{{ c.Product_ID_id }}">Product Detail</a></td>
+        </tr>
+         {% endfor %}
+    </table>
+        </div>
+    <div class="container">
+        <a class="waves-effect waves-light btn {% if empty %}disabled{% endif %}" href="/c/Cart_Checkout/{{ total }}"> check out all items </a>
+        <h6 class="right">Total Payment = <span>{{ total }}</span></h6>
+    </div>
+
+{% endblock %}

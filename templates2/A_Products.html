@@ -1,0 +1,85 @@
+{% extends 'Home.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+    <h1>Products Page</h1>
+    </div>
+    {% if not superuser %}
+    <div id = "Shopping_card_add" class="container right-align">
+        <a class="waves-effect waves-light btn " id="{{ product_id }}"
+           href="{% if not login %}/c/unlogin_add_shopping_cart{% endif %}{% if login %}#{% endif %}">Add to shopping Cart</a>
+    </div>
+    {% endif %}
+    <div class="container">
+        <table border="1" class="responsive-table">
+            <thead class="black white-text">
+                <th>Thumbnail image</th>
+                <th>Product_name</th>
+                <th>Brand</th>
+                <th>Product price</th>
+                <th>ISBN</th>
+                <th>Authors</th>
+                <th>Publisher</th>
+                <th>Release date</th>
+                <th>Number of pages</th>
+            </thead>
+        {% for key in info %}
+        <tr>
+            <td><img src="{%  static key.DisplayImage %}" class="materialboxed"></td>
+            <td>{{ key.Product_name }}</td>
+            <td>{{ key.Brand }}</td>
+            <td>{{ key.Product_price }}</td>
+            <td>{{ key.ISBN }}</td>
+            <td>{{ key.Authors }}</td>
+            <td>{{ key.Publisher }}</td>
+            <td>{{ key.Release_date }}</td>
+            <td>{{ key.Num_of_pages }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+<div class="container">
+<table border="1" class="responsive-table centered">
+<thead class="green white-text">
+    <tr>
+        <th>Photographs</th>
+    </tr>
+
+    </thead>
+        {% for key in img %}
+            <tr>
+            {% for k,v in key.items %}
+                <td><img src = "{% static v %}" class="materialboxed"></td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </table>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    <!--Ajax call to add item to shopping cart-->
+        <script>
+        var item_num = 0
+        $('#Shopping_card_add a').click(function () {
+            var product_id = $(this).attr('id');
+            $.ajax({
+                url: '/c/add_shopping_cart',
+                type: 'GET',
+                data: { 'id': product_id},
+                success: function(data){
+                    console.log(data);
+                    item_num ++
+                    $('#' + data.data).text('item added to your shopping cart' + ' ( ' + item_num + ' )')
+                },
+                error: function (xht,errmsg,err) {
+                    console.log(xht + " " + errmsg + " " + err)
+                }
+            })
+        })
+        </script>
+{% endblock %}

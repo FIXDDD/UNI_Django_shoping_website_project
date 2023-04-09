@@ -1,0 +1,27 @@
+{% extends 'authorize.html' %}
+
+{% block content %}
+    <div class="container white" id="pw_form" style="margin-top:100px;max-width: 100%; border: 2px solid #73AD21;border-radius: 25px; background-color: #0f9d58">
+            <h1 class="center">Change Password</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+            {{ pw_form.as_table }}
+            </table>
+            <div class="center">
+           <br>
+                <a id="Change_pw__button" class="buttonChangePassword instagram" value="Change_pw"><span class="gradient"></span>Change Password</a>
+            </div>
+        </form>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    {% if messages %}
+        <script>
+    {% for message in messages %}
+    alert('{{ message }}');
+    {% endfor %}
+        </script>
+    {% endif %}
+{% endblock %}

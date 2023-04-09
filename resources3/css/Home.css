@@ -1,0 +1,58 @@
+.HotBookTitle{
+    color: #921736;
+
+    font-weight: bold;
+    margin-bottom: 5pt;
+
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 40px;
+}
+
+
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+
+}
+
+    <!--Parallax Start-->
+.background-farallax {
+     background-image:url('{{ STATIC_URL }}image/parallar_b.png');
+  background-size: 100%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 767px) {
+  .background-farallax {
+background: url("/resources/image/parallar_b.png") 50% 0 no-repeat fixed;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .PhoneTitleBig{
+        font-size: 34pt;
+    }
+    .PhoneTitleMedium{
+        font-size: 20pt;
+    }
+    .PhoneContextSize{
+        font-size: 14pt;
+    }
+     .PhoneContextSizeSmall{
+        font-size: 7pt;
+         color: red;
+    }
+
+}

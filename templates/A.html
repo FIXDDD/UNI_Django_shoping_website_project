@@ -1,0 +1,99 @@
+{% extends 'Home.html' %}
+{% load static %}
+
+<!-- HTML code form -->
+{% block content %}
+    <div class="container">
+    <!-- form for sort -->
+    <div>
+    <h1>Products List</h1>
+<form id="sort_form" method="get" action="/a/">
+    <p>
+        Search Book Name: <input type="text" name="product_name" {% if search_input %} value="{{ search_input }}" {% endif %}>
+    </p>
+    {% if superuser %}
+    <p>
+        Search Product id: <input type="text" name="product_id" {% if search_id %} value="{{ search_id }}" {% endif %}>
+    </p>
+    {% endif %}
+    <p>
+    <label>Filter by Brand:</label>
+    <select class="browser-default" name="filter_by">
+        <option selected="true" disabled="disabled">Brand</option>
+        {% for x in sort %}
+            <option value="{{x}}" {% if filter_input == x %} selected {% endif %}>{{x}}</option>
+        {% endfor %}
+    </select>
+    </p>
+    {% if reset_btn %}
+    <p>
+        <label>
+            <a class="waves-effect waves-light btn" href="/a/">Reset</a>
+        </label>
+    </p>
+    {% endif %}
+    <p>
+        <label>
+            <input type="checkbox" name="sort_by_price" value="sort" {% if sort_brand_input %} checked {% endif %}/>
+            <span>Sort by Price </span>
+        </label>
+    </p>
+<p class="right-align">
+    <a id="sort_form_btn" class="waves-effect waves-light btn">Search</a>
+</p>
+</form>
+    <!-- end form for sort -->
+
+    <!-- Generate data each table -->
+    {% for c in info %}
+        <div id="{{ c.Product_ID }}">
+<table border="1" class="responsive-table">
+    <thead class="black white-text">
+    <tr>
+        <th>Thumbnail image</th>
+        {% if superuser %}
+            <th>Product_ID</th>
+        {% endif %}
+        <th>Product_name</th>
+        <th>Product_price</th>
+        <th>Brand</th>
+        <th>Link</th>
+    </tr>
+    </thead>
+        <tr>
+            <td><img src="{% static c.DisplayImage %}" class="materialboxed"/></td>
+            {% if superuser %}
+            <td>{{ c.Product_ID }}</td>
+        {% endif %}
+            <td>{{ c.Product_name}}</td>
+            <td>{{ c.Product_price }}</td>
+            <td>{{ c.Brand }}</td>
+            <td><a class="waves-effect waves-light btn " href="/a/product/{{ c.Product_ID }}">Product Detail</a></td>
+        </tr>
+    </table>
+        </div>
+    {% endfor %}
+<!-- End Generate data each table -->
+    </div>
+
+    <div class="center-align">
+         <ul class="pagination">
+             <li class="{% if page_num == 1 %}disabled {% endif %} waves-effect">
+                 <a {% if page_num == 1 %}disabled {% endif %}{% if page_num != 1 %} href="?product_name={{ search_input }}&product_id={{ search_id }}&filter_by={{ filter_input }}&sort_by_price={{ sort_brand_input }}&page={{ pre_page }}" {% endif %}>
+                     <i class="material-icons">chevron_left</i>
+                 </a>
+             </li>
+             {% for c in page %}
+                 <li class="{% if page_num == c %}active{% endif %}">
+                     <a href="?product_name={{ search_input }}&product_id={{ search_id }}&filter_by={{ filter_input }}&sort_by_price={{ sort_brand_input }}&page={{ c }}">{{ c }}</a>
+                 </li>
+             {% endfor %}
+             <li class="{% if page_num == end_page %}disabled {% endif %}waves-effect " >
+                 <a {% if page_num == end_page %}disabled {% endif %}{% if page_num != end_page %} href="?product_name={{ search_input }}&product_id={{ search_id }}&filter_by={{ filter_input }}&sort_by_price={{ sort_brand_input }}&page={{ page_num|add:'1' }}" {% endif %}>
+                     <i class="material-icons">chevron_right</i>
+                 </a>
+             </li>
+         </ul>
+    </div>
+    </div>
+{% endblock %}

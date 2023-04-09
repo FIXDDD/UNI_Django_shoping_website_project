@@ -1,0 +1,114 @@
+{% extends 'Home.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Purchase processing</h1>
+    <form id="process_form" method="get" action='/f/purchase_processing'>
+        <p>
+            Search by P.O.number: <input type="text" name="order_number" {% if search_input %} value="{{ search_input }}" {% endif %}>
+        </p>
+        {% if search_input %}
+        <p>
+            <a class="waves-effect waves-light btn" href="/f/purchase_processing">List all</a>
+        </p>
+        {% endif %}
+        <p class="right-align">
+            <a id="process_form_btn" class="waves-effect waves-light btn">Search</a>
+        </p>
+
+    </form>
+    </div>
+    <div id="Purchase_processing" class="container">
+    {% for key in info %}
+        <div id="{{ key.POnumber }}" class="detail_info">
+<table border="1" class="responsive-table">
+    <thead class="black white-text">
+    <tr>
+        <th>POnumber</th>
+        <th>Order date</th>
+        <th>Cancel date</th>
+        <th>Cancel by</th>
+        <th>Ship date</th>
+        <th>Status</th>
+        <th>Total payment</th>
+        <th>Address</th>
+        <th>first name</th>
+        <th>last name</th>
+        <th>username</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ key.POnumber }}</td>
+            <td>{{ key.Order_date }}</td>
+            <td>{{ key.Cancel_date }}</td>
+            <td>{{ key.Cancel_by }}</td>
+            <td>{{ key.Ship_date }}</td>
+            <td>{{ key.Status }}</td>
+            <td>{{ key.Total_payment }}</td>
+            <td>{{ key.address }}</td>
+            <td>{{ key.first_name }}</td>
+            <td>{{ key.last_name }}</td>
+            <td>{{ key.username }}</td>
+        </tr>
+    </tbody>
+</table>
+        <div class="container">
+            <table class="responsive-table">
+                <thead class="green white-text">
+                {% for x in key.detail|slice:":1"%}
+                    <tr>
+                        {% for k,v in x.items %}
+                            <th>{{ k }}</th>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </thead>
+                <tbody>
+                    {% for x in key.detail%}
+                        <tr>
+                            {% for k,v in x.items %}
+                                <td>{{ v }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <p class="right-align">
+            <a id="hold_btn" class="waves-effect waves-light btn {% if key.Status == 'Shipped' or  key.Status == 'Cancelled' or key.Status == 'Hold'%}disabled{%endif %}"
+               href="/f/purchase_processing/hold_order/{{ key.POnumber }}">
+                Hold Order
+            </a>
+            <a id="ship_btn" class="waves-effect waves-light btn {% if key.Status == 'Shipped' or  key.Status == 'Cancelled'%}disabled{%endif %}"
+               href="/f/purchase_processing/ship_order/{{ key.POnumber }}">
+                Ship Order
+            </a>
+            <a id="vendor_cancel_btn" class="waves-effect waves-light btn {% if key.Status == 'Shipped' or  key.Status == 'Cancelled'%}disabled{%endif %}"
+               href="/f/purchase_processing/cancel_order/{{key.POnumber }}">
+                Cancel Order
+            </a>
+        </p>
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+    {% if messages %}
+
+        $(document).ready(function () {
+            {% for message in messages %}
+                alert('{{ message }}');
+                {% endfor %}
+        })
+
+    {% endif %}
+    $('#process_form_btn').click(function () {
+        $("#process_form").submit();
+    })
+    </script>
+{% endblock %}

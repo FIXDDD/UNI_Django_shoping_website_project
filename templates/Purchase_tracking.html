@@ -1,0 +1,66 @@
+{% extends 'Home.html' %}
+
+{% block content %}
+    <div class="container" id="tracking_form">
+        <h1>Purchase tracking</h1>
+    <form method="get" action="/d/purchase_tracking">
+        <p>
+            <label>
+                <input name="sort_status" type="radio" value="current" {% if sort == 'current' %}checked{% endif %}/>
+                <span>Current purchase</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input name="sort_status" type="radio" value="past" {% if sort == 'past' %}checked{% endif %}/>
+                <span>Past Purchase</span>
+            </label>
+        </p>
+        <p class="right-align">
+            <a id="sort_status_form_btn" class="waves-effect waves-light btn">Search</a>
+        </p>
+    </form>
+    </div>
+
+        <div class="container">
+<table border="1" id="tracking" class="responsive-table highlight">
+    <thead class="black white-text">
+        <tr>
+            <th>POnumber</th>
+            <th>Order_date</th>
+            <th>Total_payment</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for y in info %}
+        <tr id="{{ y.POnumber }}">
+            <td>{{ y.POnumber }}</td>
+            <td>{{ y.Order_date }}</td>
+            <td>{{ y.Total_payment }}</td>
+            <td>{{ y.Status }}</td>
+        </tr>
+    {% endfor %}
+</tbody>
+    </table>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+    {% if messages %}
+        $(document).ready(function () {
+            {% for message in messages %}
+                alert('{{ message }}');
+                {% endfor %}
+        })
+
+    {% endif %}
+    $('#tracking tbody tr').click(function(event){
+            window.location.href = "/d/Purchase_detail#" + event.currentTarget.id
+        })
+    $('#sort_status_form_btn').click(function(){
+        $('#tracking_form form').submit()
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,37 @@
+
+{% extends 'authorize.html' %}
+{% load static %}
+{% block content%}
+
+        <div class="container white" id="login_form" style="margin-top: 100px">
+            <h1>Login</h1>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a id="Login_button" class="waves-effect waves-light btn" value="Login">Login</a>
+            <a class="waves-effect waves-light btn" href="/b/register">Register</a>
+        </form>
+        </div>
+    <div class="container">
+        <p class="red-text">{{ error }}</p>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block javascript %}
+    {% if messages %}
+        <script>
+        $(document).ready(function () {
+            {% for message in messages %}
+                alert('{{ message }}');
+                {% endfor %}
+        })
+        </script>
+    {% endif %}
+{% endblock %}
